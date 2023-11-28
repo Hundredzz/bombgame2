@@ -16,7 +16,7 @@ public class Heart_Health2 : MonoBehaviour
     public RawImage bg;
     private bool isInvicible = false;
     private float invicibletime;
-    // Update is called once per frame
+    
     void Update()
     {
         if (isInvicible == true)

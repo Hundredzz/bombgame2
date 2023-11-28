@@ -9,6 +9,7 @@ public class Explotion : MonoBehaviour
     private float upwardsModifier = 10;
     private bool hiton = false;
     public GameObject bombparticlePrefab;
+    public ThrowingTutorial player_bomb;
     private void Start()
     {
         if (!bombparticlePrefab)
@@ -35,8 +36,9 @@ public class Explotion : MonoBehaviour
     }
     private void Explode()
     {
-            Instantiate(bombparticlePrefab, transform.position, transform.rotation);
+        Instantiate(bombparticlePrefab, transform.position, transform.rotation);
         Collider[] hitColliders = new Collider[10];
+        player_bomb.setBombdamto1();
         Destroy(gameObject);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 
@@ -9,6 +10,7 @@ public class ThrowingTutorial : MonoBehaviour
     public Transform cam;
     public Transform attackPoint;
     public GameObject objectToThrow;
+    public Text damage_text;
 
     public int totalThrows;
     public float throwCooldown;
@@ -34,6 +36,15 @@ public class ThrowingTutorial : MonoBehaviour
             cangetbomb = true;
             cangetbomb2 = true;
         }
+        if(bombtier1 == 1)
+        {
+            damage_text.text = "0";
+        }
+        else
+        {
+            damage_text.text = "" + bombtier1;
+        }
+        
     }
 
     private void Throw()
@@ -61,6 +72,8 @@ public class ThrowingTutorial : MonoBehaviour
 
         totalThrows--;
 
+
+
     }
 
 
@@ -69,8 +82,7 @@ public class ThrowingTutorial : MonoBehaviour
         if (other.gameObject.tag == "bombitem" && cangetbomb == true)
         {
             if (readyToThrow == false)
-            {
-                bombtier1 = 1;
+            {   
                 cangetbomb2 = false;
             }
                 readyToThrow = true;
@@ -81,12 +93,16 @@ public class ThrowingTutorial : MonoBehaviour
         if (other.gameObject.tag == "bombitem2" && cangetbomb2 == true)
         {
                 if (readyToThrow == false)
-                {
-                    bombtier1 = 1;
+                {;
                     cangetbomb = false;
                 }
                 readyToThrow = true;
                 bombtier1 *= 3;
         }
+    }
+
+    public void setBombdamto1()
+    {
+        bombtier1 = 1;
     }
 }

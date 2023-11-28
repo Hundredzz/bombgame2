@@ -10,7 +10,8 @@ public class EnemyStat : MonoBehaviour
     public SliderScriprt shieldSlider;
     public PlayerStat player;
     public EnemyMovement mov;
-    
+
+    public ThrowingTutorial player_bomb;
     public CameraShake camShake;
     public Animator anim;
     public PlayableDirector enemyWin;
@@ -87,6 +88,11 @@ public class EnemyStat : MonoBehaviour
             takeDMG(player.atk*player.multi);
             camShake.Shaking(6,0.5f);
             
+        }
+        else if(col.gameObject.tag == "bomb")
+        {
+            anim.Play("GetHit");
+            hp -= player_bomb.bombtier1;
         }
     }
 
