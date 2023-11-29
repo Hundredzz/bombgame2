@@ -14,6 +14,7 @@ public class ThrowingTutorial : MonoBehaviour
 
     public int totalThrows;
     public float throwCooldown;
+    private int totalBomb;
 
     public KeyCode throwKey = KeyCode.Mouse0;
     public float throwForce;
@@ -85,19 +86,21 @@ public class ThrowingTutorial : MonoBehaviour
             {   
                 cangetbomb2 = false;
             }
-                readyToThrow = true;
-                bombtier1 *= 2;
+            readyToThrow = true;
+            bombtier1 *= 2;
+            totalBomb += 1;
         }
 
 
         if (other.gameObject.tag == "bombitem2" && cangetbomb2 == true)
         {
-                if (readyToThrow == false)
-                {;
-                    cangetbomb = false;
-                }
-                readyToThrow = true;
-                bombtier1 *= 3;
+            if (readyToThrow == false)
+            {;
+                cangetbomb = false;
+            }
+            readyToThrow = true;
+            bombtier1 *= 3;
+            totalBomb += 1;
         }
     }
 
