@@ -38,7 +38,7 @@ public class Explotion : MonoBehaviour
     {
         Instantiate(bombparticlePrefab, transform.position, transform.rotation);
         Collider[] hitColliders = new Collider[10];
-        player_bomb.setBombdamto1();
+        // player_bomb.setBombdamto1();
         Destroy(gameObject);
     }
 }

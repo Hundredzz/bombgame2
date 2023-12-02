@@ -1,17 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private float speed = 5;
-    private Vector3 input;
+    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private float _speed = 5;
+    [SerializeField] private float _turnSpeed = 360;
+    [SerializeField] private float _dashSpeed = 20;
+
+    private Vector3 _input;
+
+    private void Awake() {
+        
+        _rb = GetComponent<Rigidbody>();
+
+    }
 
     private void Update()
     {
-        GetInput();
+        GatherInput();
+        Dashing();
         Look();
+    }
+
+    private void Dashing()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+            _rb.AddForce(transform.forward * _dashSpeed, ForceMode.Impulse);
+        }
     }
 
     private void FixedUpdate()
@@ -19,29 +38,30 @@ public class Movement : MonoBehaviour
         Move();
     }
 
-    private void GetInput()
+    private void GatherInput()
     {
-        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
     private void Look()
     {
-        if (input != Vector3.zero)
-        {
-            var relative = (transform.position + input) - transform.position;
-            var rot = Quaternion.LookRotation(relative, Vector3.up);
+        if (_input == Vector3.zero) return;
 
-            transform.rotation = rot;
-        }
+        var rot = Quaternion.LookRotation(_input.ToIso(), Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
     }
 
     private void Move()
     {
-        rb.MovePosition(transform.position + (transform.forward * input.magnitude) * speed * Time.deltaTime);
+        _rb.MovePosition(transform.position + transform.forward * _input.normalized.magnitude * _speed * Time.deltaTime);
     }
 }
 
-
+public static class Helpers
+{
+    private static Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+    public static Vector3 ToIso(this Vector3 input) => _isoMatrix.MultiplyPoint3x4(input);
+}
 
 
 

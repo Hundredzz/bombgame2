@@ -37,14 +37,14 @@ public class ThrowingTutorial : MonoBehaviour
             cangetbomb = true;
             cangetbomb2 = true;
         }
-        if(bombtier1 == 1)
-        {
-            damage_text.text = "0";
-        }
-        else
-        {
-            damage_text.text = "" + bombtier1;
-        }
+        // if(bombtier1 == 1)
+        // {
+        //     damage_text.text = "0";
+        // }
+        // else
+        // {
+        //     damage_text.text = "" + bombtier1;
+        // }
         
     }
 
@@ -104,8 +104,8 @@ public class ThrowingTutorial : MonoBehaviour
         }
     }
 
-    public void setBombdamto1()
-    {
-        bombtier1 = 1;
-    }
+    // public void setBombdamto1()
+    // {
+    //     bombtier1 = 1;
+    // }
 }
