@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Heart_Health2 : MonoBehaviour
 {
     public int health = 5;
+    private int maxHealth;
     public int numOfheart = 5;
     private float invicible = 2f;
 
@@ -21,6 +22,7 @@ public class Heart_Health2 : MonoBehaviour
 
     private void Start()
     {
+        maxHealth = health;
     }
 
     void Update()
@@ -72,6 +74,13 @@ public class Heart_Health2 : MonoBehaviour
             health -= 1;
             isInvicible = true;
             invicibletime = invicible;
+        }
+        if (other.CompareTag("Heal"))
+        {
+            if (health < maxHealth) { 
+                health += 1;
+                Destroy(other.gameObject);
+            }
         }
     }
 
