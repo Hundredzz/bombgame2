@@ -59,7 +59,7 @@ public class ThrowingTutorial : MonoBehaviour
      }
 
     private void maxBomb() {
-        if(totalBomb>=maximumBomb)
+        if(totalBomb>maximumBomb)
         {
             explotion.selfExplode(player);
         }
