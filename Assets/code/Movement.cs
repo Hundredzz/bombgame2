@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _speed = 5;
     [SerializeField] private float _turnSpeed = 360;
     [SerializeField] private float _dashSpeed = 20;
+    private float _dashCooldown = 0;
 
     private Vector3 _input;
 
@@ -24,18 +25,31 @@ public class Movement : MonoBehaviour
         GatherInput();
         Dashing();
         Look();
+        
     }
 
     private void Dashing()
     {
         if(Input.GetKeyDown(KeyCode.LeftShift)){
-            _rb.AddForce(transform.forward * _dashSpeed, ForceMode.Impulse);
+            if(_dashCooldown <= 0) { 
+                _rb.AddForce(transform.forward * _dashSpeed, ForceMode.Impulse);
+                _dashCooldown = 2f;
+            }
+        }
+    }
+
+    private void countDown()
+    {
+        if(_dashCooldown > 0)
+        {
+            _dashCooldown -= Time.deltaTime;
         }
     }
 
     private void FixedUpdate()
     {
         Move();
+        countDown();
     }
 
     private void GatherInput()

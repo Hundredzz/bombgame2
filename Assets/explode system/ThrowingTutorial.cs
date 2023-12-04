@@ -11,6 +11,7 @@ public class ThrowingTutorial : MonoBehaviour
     public Transform attackPoint;
     public GameObject objectToThrow;
     public Text damage_text;
+    public Text total_text;
 
     public int totalThrows;
     public float throwCooldown;
@@ -37,14 +38,15 @@ public class ThrowingTutorial : MonoBehaviour
             cangetbomb = true;
             cangetbomb2 = true;
         }
-        // if(bombtier1 == 1)
-        // {
-        //     damage_text.text = "0";
-        // }
-        // else
-        // {
-        //     damage_text.text = "" + bombtier1;
-        // }
+        if(bombtier1 == 1)
+        {
+            damage_text.text = "0";
+        }
+        else
+        {
+            damage_text.text = "" + bombtier1;
+        }
+        total_text.text = "" + totalBomb;
         
     }
 
@@ -85,6 +87,8 @@ public class ThrowingTutorial : MonoBehaviour
             if (readyToThrow == false)
             {   
                 cangetbomb2 = false;
+                bombtier1 = 1;
+                totalBomb = 0;
             }
             readyToThrow = true;
             bombtier1 *= 2;
@@ -97,6 +101,8 @@ public class ThrowingTutorial : MonoBehaviour
             if (readyToThrow == false)
             {;
                 cangetbomb = false;
+                bombtier1 = 1;
+                totalBomb = 0;
             }
             readyToThrow = true;
             bombtier1 *= 3;
@@ -104,8 +110,9 @@ public class ThrowingTutorial : MonoBehaviour
         }
     }
 
-    // public void setBombdamto1()
-    // {
-    //     bombtier1 = 1;
-    // }
+    public void setBombdamto1()
+    {
+        bombtier1 = 1;
+        totalBomb = 0;
+    }
 }
