@@ -16,7 +16,12 @@ public class Heart_Health2 : MonoBehaviour
     public RawImage bg;
     private bool isInvicible = false;
     private float invicibletime;
-    
+
+
+    private void Start()
+    {
+    }
+
     void Update()
     {
         if (isInvicible == true)
