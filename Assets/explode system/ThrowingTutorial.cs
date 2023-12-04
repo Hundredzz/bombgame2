@@ -10,14 +10,12 @@ public class ThrowingTutorial : MonoBehaviour
     public Transform cam;
     public Transform attackPoint;
     public GameObject objectToThrow;
-    public Text damage_text;
-    public Text total_text;
     [SerializeField] Transform player;
     [SerializeField] Explotion explotion;
 
     public int totalThrows;
     public float throwCooldown;
-    private int totalBomb;
+    public int totalBomb;
 
     public KeyCode throwKey = KeyCode.Mouse0;
     public float throwForce;
@@ -41,22 +39,11 @@ public class ThrowingTutorial : MonoBehaviour
             cangetbomb = true;
             cangetbomb2 = true;
         }
-        bombCount();
         maxBomb();
 
     }
 
-    private void bombCount() {
-        if(bombtier1 == 1)
-        {
-            damage_text.text = "0";
-        }
-        else
-        {
-            damage_text.text = "" + bombtier1;
-        }
-        total_text.text = "" + totalBomb;
-     }
+    
 
     private void maxBomb() {
         if(totalBomb>maximumBomb)

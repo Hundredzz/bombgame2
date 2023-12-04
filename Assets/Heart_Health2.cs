@@ -12,8 +12,9 @@ public class Heart_Health2 : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    public Text gameover;
-    public RawImage bg;
+    public Vector3 respawnPoint;
+
+
     private bool isInvicible = false;
     private float invicibletime;
 
@@ -53,26 +54,35 @@ public class Heart_Health2 : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
-        if (health > 0)
+
+        if(health <= 0)
         {
-            gameover.enabled = false;
-            bg.enabled = false;
-        }
-        else
-        {
-            Destroy(gameObject);
-            gameover.enabled = true;
-            bg.enabled = true;
+            Death();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Checkpoint"))
+        {
+            respawnPoint = transform.position;
+        }
         if (other.CompareTag("Lava") && isInvicible != true)
         {
             health -= 1;
             isInvicible = true;
             invicibletime = invicible;
         }
+    }
+
+    private void Death()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Resetplayer()
+    {
+        gameObject.SetActive(true);
+        health = 5;
     }
 }
