@@ -24,7 +24,7 @@ public class ThrowingTutorial : MonoBehaviour
     public bool cangetbomb = true;
     public bool cangetbomb2 = true;
     bool readyToThrow;
-    [SerializeField] int maximumBomb = 15;
+    [SerializeField] int maximumBombDamage = 1000;
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class ThrowingTutorial : MonoBehaviour
     
 
     private void maxBomb() {
-        if(totalBomb>maximumBomb)
+        if(bombtier1>maximumBombDamage)
         {
             explotion.selfExplode(player);
         }
