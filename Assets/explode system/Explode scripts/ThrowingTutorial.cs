@@ -31,6 +31,7 @@ public class ThrowingTutorial : MonoBehaviour
     [SerializeField] private float timethrow = 0.5f;
     [SerializeField] private float timecancle = 1f;
     private Animator animator;
+    [SerializeField] private AudioSource sfx;
 
     private void Awake() {
         cam = Camera.main.transform;
@@ -78,7 +79,7 @@ public class ThrowingTutorial : MonoBehaviour
     }
     private void Throw()
     {
-        
+        sfx.Play(0);
         isPickBomb = false;
         readyToThrow = false;
         totalBomb = 0;

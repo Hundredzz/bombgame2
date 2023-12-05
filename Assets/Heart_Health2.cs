@@ -14,7 +14,8 @@ public class Heart_Health2 : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public Vector3 respawnPoint;
-    [SerializeField] private AudioSource sfx;
+    [SerializeField] private AudioSource sfx; 
+    [SerializeField] private AudioSource sfxTakedam;
     public Animator animator;
 
 
@@ -30,7 +31,12 @@ public class Heart_Health2 : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if(isInvicible == false){
+            sfxTakedam.Play(0);
+            health -= damage;
+            isInvicible = true;
+            invicibletime = invicible;
+        }
     }
 
     void Update()
@@ -80,6 +86,7 @@ public class Heart_Health2 : MonoBehaviour
         if (other.CompareTag("Lava") && isInvicible != true)
         {
             animator.SetTrigger("isDamage");
+            sfxTakedam.Play(0);
             health -= 1;
             isInvicible = true;
             invicibletime = invicible;

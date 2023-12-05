@@ -37,8 +37,14 @@ public class AttributeManeger : MonoBehaviour
     {
         if(Health <= 0)
         { 
-            Instantiate(wallbreak, transform.position, transform.rotation);
-            Destroy(gameObject);
+            if(wallbreak != null) { 
+                Instantiate(wallbreak, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
