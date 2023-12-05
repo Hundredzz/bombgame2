@@ -14,8 +14,9 @@ public class Movement : MonoBehaviour
 
     private Vector3 _input;
 
-    private void Awake() {
-        
+    private void Awake()
+    {
+
         _rb = GetComponent<Rigidbody>();
 
     }
@@ -25,13 +26,15 @@ public class Movement : MonoBehaviour
         GatherInput();
         Dashing();
         Look();
-        
+
     }
 
     private void Dashing()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift)){
-            if(_dashCooldown <= 0) { 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (_dashCooldown <= 0)
+            {
                 _rb.AddForce(transform.forward * _dashSpeed, ForceMode.Impulse);
                 _dashCooldown = 2f;
             }
@@ -40,7 +43,7 @@ public class Movement : MonoBehaviour
 
     private void countDown()
     {
-        if(_dashCooldown > 0)
+        if (_dashCooldown > 0)
         {
             _dashCooldown -= Time.deltaTime;
         }
@@ -76,7 +79,3 @@ public static class Helpers
     private static Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
     public static Vector3 ToIso(this Vector3 input) => _isoMatrix.MultiplyPoint3x4(input);
 }
-
-
-
-

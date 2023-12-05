@@ -175,6 +175,7 @@ MonoBehaviour:
   fullHeart: {fileID: -1722370376, guid: 6c7e392f2f5958d4d9271d63a5027c2f, type: 3}
   emptyHeart: {fileID: 1324024850, guid: 6c7e392f2f5958d4d9271d63a5027c2f, type: 3}
   respawnPoint: {x: 0, y: 0, z: 0}
+  sfx: {fileID: 0}
 --- !u!114 &4594771393661933515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,9 +205,8 @@ MonoBehaviour:
   objectToThrow: {fileID: 437174903627781570, guid: 6c0cf881566f4724ba84a09c439b982c,
     type: 3}
   player: {fileID: 7447915234257532600}
-  explotion: {fileID: 0}
-  totalThrows: 9999
-  throwCooldown: 9999
+  explotion: {fileID: 600606345097217793, guid: 6c0cf881566f4724ba84a09c439b982c,
+    type: 3}
   totalBomb: 0
   throwKey: 323
   throwForce: 70

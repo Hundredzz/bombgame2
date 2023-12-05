@@ -28,6 +28,10 @@ public class ThrowingTutorial : MonoBehaviour
     bool readyToThrow;
     [SerializeField] int maximumBombDamage = 1000;
 
+    private void Awake() {
+        cam = Camera.main.transform;
+    }
+
     private void Start()
     {
         readyToThrow = false;
