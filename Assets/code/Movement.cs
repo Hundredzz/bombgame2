@@ -13,10 +13,11 @@ public class Movement : MonoBehaviour
     private float _dashCooldown = 0;
 
     private Vector3 _input;
+    private Animator animator;
 
     private void Awake()
     {
-
+        animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
 
     }
@@ -62,8 +63,10 @@ public class Movement : MonoBehaviour
 
     private void Look()
     {
-        if (_input == Vector3.zero) return;
-
+        if (_input == Vector3.zero) { 
+            animator.SetBool("isMove", false); 
+            return; }
+        animator.SetBool("isMove", true);
         var rot = Quaternion.LookRotation(_input.ToIso(), Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
     }

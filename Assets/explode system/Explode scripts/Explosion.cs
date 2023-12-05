@@ -5,9 +5,12 @@ public class Explosion : MonoBehaviour
 {
     public GameObject bombParticlePrefab;
     public Camera mainCamera;
+    public Heart_Health2 heart_health2;
+    public ThrowingTutorial throwingtutorial;
 
     public float shakeDuration = 0.5f;
     public float shakeMagnitude = 0.2f;
+    public AudioSource sfx;
 
     private Vector3 originalPosition;
 
@@ -59,7 +62,16 @@ public class Explosion : MonoBehaviour
 
     private void Explode()
     {
+        sfx.Play(0);
         Instantiate(bombParticlePrefab, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+    public void selfExplode(Transform player)
+    {
+        sfx.Play(0);
+        heart_health2.animator.SetTrigger("isDamage");
+        Instantiate(bombParticlePrefab, player.position, player.rotation);
+        heart_health2.health -= 1;
+        throwingtutorial.setBombdamto1();
     }
 }

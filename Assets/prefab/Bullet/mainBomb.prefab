@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 437174903627781570}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.48, y: -647.1113, z: -83.20892}
+  m_LocalPosition: {x: 13.435838, y: 0, z: -50.42651}
   m_LocalScale: {x: 0.81438, y: 0.81438, z: 0.81438}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -151,3 +151,4 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   shakeDuration: 0.1
   shakeMagnitude: 0.02
+  sfx: {fileID: 0}

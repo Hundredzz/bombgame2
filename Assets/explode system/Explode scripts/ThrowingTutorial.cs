@@ -27,6 +27,10 @@ public class ThrowingTutorial : MonoBehaviour
     // public bool cangetbomb2 = true;
     bool readyToThrow;
     [SerializeField] int maximumBombDamage = 1000;
+    private float time;
+    [SerializeField] private float timethrow = 0.5f;
+    [SerializeField] private float timecancle = 1f;
+    private Animator animator;
 
     private void Awake() {
         cam = Camera.main.transform;
@@ -35,29 +39,46 @@ public class ThrowingTutorial : MonoBehaviour
     private void Start()
     {
         readyToThrow = false;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(throwKey) && readyToThrow )
         {
-            Throw();
+            StartCoroutine(AttackWithDelay());
             // cangetbomb = true;
             // cangetbomb2 = true;
         }
-        // maxBomb();
+         maxBomb();
 
     }
 
-    // private void maxBomb() {
-    //     if(bombtier1>maximumBombDamage)
-    //     {
-    //         explotion.selfExplode(player);
-    //     }
-    // }
+     private void maxBomb() {
+         if(bombBaseDamage>maximumBombDamage)
+         {
+             explotion.selfExplode(player);
+         }
+     }
 
+
+    IEnumerator AttackWithDelay()
+    {
+        // Set the "isAttack" parameter to true in the animator
+        animator.SetBool("isAttack", true);
+
+        // Wait for a specific amount of time (e.g., 1 second) before throwing
+        yield return new WaitForSeconds(0.5f);
+
+        // Call the Throw() function after the delay
+        Throw();
+
+        yield return new WaitForSeconds(0.7f);
+        animator.SetBool("isAttack", false);
+    }
     private void Throw()
     {
+        
         isPickBomb = false;
         readyToThrow = false;
         totalBomb = 0;
@@ -83,7 +104,6 @@ public class ThrowingTutorial : MonoBehaviour
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
 
         // totalThrows--;
-
     }
 
 
@@ -132,5 +152,6 @@ public class ThrowingTutorial : MonoBehaviour
     {
         bombBaseDamage = 1;
         totalBomb = 0;
+        bomb = 0;
     }
 }

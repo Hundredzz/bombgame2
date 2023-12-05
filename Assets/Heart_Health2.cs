@@ -15,6 +15,7 @@ public class Heart_Health2 : MonoBehaviour
     public Sprite emptyHeart;
     public Vector3 respawnPoint;
     [SerializeField] private AudioSource sfx;
+    public Animator animator;
 
 
     private bool isInvicible = false;
@@ -24,6 +25,7 @@ public class Heart_Health2 : MonoBehaviour
     private void Start()
     {
         maxHealth = health;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -72,6 +74,7 @@ public class Heart_Health2 : MonoBehaviour
         }
         if (other.CompareTag("Lava") && isInvicible != true)
         {
+            animator.SetTrigger("isDamage");
             health -= 1;
             isInvicible = true;
             invicibletime = invicible;
