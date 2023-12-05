@@ -6,8 +6,8 @@ public class AttributeManeger : MonoBehaviour
 {
     public float Health;
     private float maxHealth;
-    public int dealdamage;
     public ThrowingTutorial script;
+
 
     [SerializeField] private Healthbar1 healthbar1;
     [SerializeField] private Transform wallbreak;
