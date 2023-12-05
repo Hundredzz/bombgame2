@@ -28,6 +28,11 @@ public class Heart_Health2 : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
+
     void Update()
     {
         if (isInvicible == true)
