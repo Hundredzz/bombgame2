@@ -92,7 +92,7 @@ public class EnemyStat : MonoBehaviour
         else if(col.gameObject.tag == "bomb")
         {
             anim.Play("GetHit");
-            hp -= player_bomb.bombtier1;
+            hp -= player_bomb.bombBaseDamage;
         }
     }
 

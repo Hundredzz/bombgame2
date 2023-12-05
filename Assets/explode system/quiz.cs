@@ -32,7 +32,7 @@ public class quiz : MonoBehaviour
     {
         if (other.gameObject.tag == "bomb")
         {
-            if(script.bombtier1 == damagecal)
+            if(script.bombBaseDamage == damagecal)
             {
                 Instantiate(wallbreak, transform.position, transform.rotation);
                 Destroy(gameObject);

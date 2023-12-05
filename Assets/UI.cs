@@ -50,13 +50,13 @@ public class UI : MonoBehaviour
 
     private void bombCount()
     {
-        if (throwingtutorial.bombtier1 == 1)
+        if (throwingtutorial.bombBaseDamage == 1)
         {
             damage_text.text = "0";
         }
         else
         {
-            damage_text.text = "" + throwingtutorial.bombtier1;
+            damage_text.text = "" + throwingtutorial.bombBaseDamage;
         }
         total_text.text = "" + throwingtutorial.totalBomb;
     }
