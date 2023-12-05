@@ -7,9 +7,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private float _speed = 5;
+    [SerializeField] private float _speed = 6;
     [SerializeField] private float _turnSpeed = 360;
-    [SerializeField] private float _dashSpeed = 20;
+    [SerializeField] private float _dashSpeed = 12;
     private float _dashCooldown = 0;
 
     private Vector3 _input;

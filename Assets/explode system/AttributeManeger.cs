@@ -22,7 +22,7 @@ public class AttributeManeger : MonoBehaviour
     {
         if (other.gameObject.tag == "bomb")
         {
-            DealDamage(script.bombtier1);
+            DealDamage(script.bombBaseDamage);
         }
 
     }

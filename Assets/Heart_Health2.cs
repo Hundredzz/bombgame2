@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Heart_Health2 : MonoBehaviour
 {
     public int health = 5;
+    private int maxHealth;
     public int numOfheart = 5;
     private float invicible = 2f;
 
@@ -13,6 +14,7 @@ public class Heart_Health2 : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public Vector3 respawnPoint;
+    [SerializeField] private AudioSource sfx;
 
 
     private bool isInvicible = false;
@@ -21,6 +23,7 @@ public class Heart_Health2 : MonoBehaviour
 
     private void Start()
     {
+        maxHealth = health;
     }
 
     void Update()
@@ -72,6 +75,14 @@ public class Heart_Health2 : MonoBehaviour
             health -= 1;
             isInvicible = true;
             invicibletime = invicible;
+        }
+        if (other.CompareTag("Heal"))
+        {
+            if (health < maxHealth) {
+                sfx.Play(0);
+                health += 1;
+                Destroy(other.gameObject);
+            }
         }
     }
 
