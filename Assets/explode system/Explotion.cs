@@ -12,6 +12,7 @@ public class Explotion : MonoBehaviour
     public ThrowingTutorial player_bomb;
     [SerializeField] private Heart_Health2 heart_Health2;
     [SerializeField] private int selfExDamage = 1;
+    [SerializeField] private AudioSource sfx;
     private void Start()
     {
         if (!bombparticlePrefab)
@@ -38,6 +39,7 @@ public class Explotion : MonoBehaviour
     }
     private void Explode()
     {
+        sfx.Play(0);
         Instantiate(bombparticlePrefab, transform.position, transform.rotation);
         Collider[] hitColliders = new Collider[10];
         player_bomb.setBombdamto1();
@@ -45,6 +47,7 @@ public class Explotion : MonoBehaviour
     }
     public void selfExplode(Transform playerTransform)
     {
+        sfx.Play(0);
         Instantiate(bombparticlePrefab, playerTransform.position, playerTransform.rotation);
         Collider[] hitColliders = new Collider[10];
         player_bomb.setBombdamto1();

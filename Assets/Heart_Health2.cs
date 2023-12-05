@@ -14,6 +14,7 @@ public class Heart_Health2 : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public Vector3 respawnPoint;
+    [SerializeField] private AudioSource sfx;
 
 
     private bool isInvicible = false;
@@ -77,7 +78,8 @@ public class Heart_Health2 : MonoBehaviour
         }
         if (other.CompareTag("Heal"))
         {
-            if (health < maxHealth) { 
+            if (health < maxHealth) {
+                sfx.Play(0);
                 health += 1;
                 Destroy(other.gameObject);
             }
