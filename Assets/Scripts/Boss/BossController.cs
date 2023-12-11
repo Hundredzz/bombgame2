@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
@@ -23,26 +25,15 @@ public class BossController : MonoBehaviour
         {
             // Move towards the player
             transform.LookAt(player);
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-
-            // Set animation conditions
-            animator.SetBool("Golem_FrontWalk", true);
+            animator.SetBool("isAttack", false);
         }
-        else
+        else if (distanceToPlayer <= attackDistance)
         {
-            // Attack the player
-            // Implement your attack logic here
+            transform.LookAt(player);
+            animator.SetBool("isAttack", true);
+            
 
-            // Set animation conditions
-            animator.SetBool("Golem_FrontWalk", false);
-            animator.SetTrigger("AttackLight");
-
-            // Damage the player
-            Heart_Health2 playerHealth = player.GetComponent<Heart_Health2>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damageAmount);
-            }
         }
     }
+
 }

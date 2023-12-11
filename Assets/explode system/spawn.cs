@@ -19,7 +19,7 @@ public class spawn : MonoBehaviour
     {
         while (true)
         { 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.5f);
             int randomIndex = Random.Range(0, myObjects.Length);
             Vector3 randomSpawnPosition = new Vector3(Random.Range(x1, x2), 1, Random.Range(z1, z2));
             Instantiate(myObjects[randomIndex], randomSpawnPosition, Quaternion.identity);
@@ -33,7 +33,7 @@ public class spawn : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(30);
+            yield return new WaitForSeconds(10);
             int randomIndex = Random.Range(0, 2);
             if(randomIndex ==1) { 
                 Vector3 randomSpawnPosition = new Vector3(Random.Range(x1, x2), 1, Random.Range(z1, z2));

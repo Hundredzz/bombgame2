@@ -17216,6 +17216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 4
+  fadeDuration: 0.5
+  moveSpeed: 0.5
 --- !u!1 &1768749282689566130
 GameObject:
   m_ObjectHideFlags: 0
