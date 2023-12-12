@@ -29,16 +29,6 @@ public class Heart_Health2 : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void TakeDamage(int damage)
-    {
-        if(isInvicible == false){
-            sfxTakedam.Play(0);
-            health -= damage;
-            isInvicible = true;
-            invicibletime = invicible;
-        }
-    }
-
     void Update()
     {
         if (isInvicible == true)
@@ -83,13 +73,9 @@ public class Heart_Health2 : MonoBehaviour
         {
             respawnPoint = transform.position;
         }
-        if (other.CompareTag("Lava") && isInvicible != true)
+        if (other.CompareTag("Lava"))
         {
-            animator.SetTrigger("isDamage");
-            sfxTakedam.Play(0);
-            health -= 1;
-            isInvicible = true;
-            invicibletime = invicible;
+            TakeDamage(1);
         }
         if (other.CompareTag("Heal"))
         {
@@ -110,5 +96,16 @@ public class Heart_Health2 : MonoBehaviour
     {
         gameObject.SetActive(true);
         health = 5;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if(isInvicible != true) { 
+            animator.SetTrigger("isDamage");
+            sfxTakedam.Play(0);
+            health -= damage;
+            isInvicible = true;
+            invicibletime = invicible;
+        }
     }
 }
