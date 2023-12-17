@@ -6,6 +6,7 @@ public class AttributeManeger : MonoBehaviour
 {
     public float Health;
     private float maxHealth;
+    public float halfHealth;
     public ThrowingTutorial script;
 
 
@@ -30,6 +31,7 @@ public class AttributeManeger : MonoBehaviour
     private void Start()
     {
         maxHealth = Health;
+        halfHealth = maxHealth / 2;
         healthbar1.UpdateHealthbar(Health, maxHealth);
     }
 

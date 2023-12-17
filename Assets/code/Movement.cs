@@ -7,10 +7,11 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private float _speed = 6;
+    [SerializeField] private float _speed = 8;
     [SerializeField] private float _turnSpeed = 360;
     [SerializeField] private float _dashSpeed = 12;
     private float _dashCooldown = 0;
+    private Vector3 playerVelocity;
 
     private Vector3 _input;
     private Animator animator;
@@ -54,6 +55,7 @@ public class Movement : MonoBehaviour
     {
         Move();
         countDown();
+        playerVelocity = _rb.velocity;
     }
 
     private void GatherInput()
@@ -74,6 +76,10 @@ public class Movement : MonoBehaviour
     private void Move()
     {
         _rb.MovePosition(transform.position + transform.forward * _input.normalized.magnitude * _speed * Time.deltaTime);
+    }
+    public Vector3 GetPlayerVelocity()
+    {
+        return playerVelocity;
     }
 }
 

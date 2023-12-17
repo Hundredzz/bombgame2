@@ -8,7 +8,7 @@ public class Heart_Health2 : MonoBehaviour
     public int health = 5;
     private int maxHealth;
     public int numOfheart = 5;
-    private float invicible = 2f;
+    private float invicible = 2.9f;
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -21,6 +21,7 @@ public class Heart_Health2 : MonoBehaviour
 
     private bool isInvicible = false;
     private float invicibletime;
+    public bool isDeath = false;
 
 
     private void Start()
@@ -89,12 +90,15 @@ public class Heart_Health2 : MonoBehaviour
 
     private void Death()
     {
+        isDeath = true;
         gameObject.SetActive(false);
     }
 
     public void Resetplayer()
     {
+        
         gameObject.SetActive(true);
+        isDeath = false;
         health = 5;
     }
 
