@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7612630180093545671}
   - component: {fileID: 6429197999564088365}
   - component: {fileID: 2898845184687384418}
+  - component: {fileID: -5926582262221447070}
   m_Layer: 0
   m_Name: rockthrow 1
   m_TagString: Lava
@@ -88,6 +89,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.9340296, y: 2.037737, z: 2.5076702}
   m_Center: {x: 0.39776176, y: 0.23203707, z: -0.104303}
+--- !u!114 &-5926582262221447070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620762701276057545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9a696b03c52e842a9af096a290ec35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockbreak: {fileID: 4118816247945383412, guid: 37ca7a94470e48e4d8a92ab885f4d407,
+    type: 3}
 --- !u!1001 &503384145476753580
 PrefabInstance:
   m_ObjectHideFlags: 0
