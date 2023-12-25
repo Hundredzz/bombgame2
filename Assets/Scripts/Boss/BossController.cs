@@ -83,5 +83,6 @@ public class BossController : MonoBehaviour
 
         lastThrowTime = Time.time; // Update the last throw time
     }
+
 }
 
